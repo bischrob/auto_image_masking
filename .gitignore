@@ -164,3 +164,8 @@ cython_debug/
 *.png
 *.pth
 *.txt
+*.zip
+sbatch*
+*.jpg
+*.err
+*.out

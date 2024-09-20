@@ -28,7 +28,7 @@ def convert_rgba_to_bw_mask(input_folder, output_folder):
                 
                 # Convert the alpha channel to a black and white mask
                 # Alpha values greater than 0 become white, 0 values become black
-                mask = alpha.point(lambda p: 0 if p > 0 else 255)
+                mask = alpha.point(lambda p: 255 if p > 0 else 0)
                 
                 # Save the result as JPEG
                 output_file_name = os.path.splitext(file_name)[0] + '.jpg'
@@ -51,31 +51,31 @@ if __name__ == '__main__':
 
 
 
-# import os
-# import shutil
-
-# src_folder = 'images'
-# dest_folder = 'PNGs'
-
-# # Ensure the destination folder exists
-# if not os.path.exists(dest_folder):
-#     os.makedirs(dest_folder)
-
-# # Move each PNG file from the source to the destination folder
-# for file_name in os.listdir(src_folder):
-#     if file_name.lower().endswith('.png'):
-#         src_path = os.path.join(src_folder, file_name)
-#         dest_path = os.path.join(dest_folder, file_name)
-#         shutil.move(src_path, dest_path)
-#         print(f"Moved {file_name} to {dest_folder}")
-
-
 import os
 import shutil
 
+src_folder = 'images'
+dest_folder = 'PNGs'
+
+# Ensure the destination folder exists
+if not os.path.exists(dest_folder):
+    os.makedirs(dest_folder)
+
+# Move each PNG file from the source to the destination folder
+for file_name in os.listdir(src_folder):
+    if file_name.lower().endswith('.png'):
+        src_path = os.path.join(src_folder, file_name)
+        dest_path = os.path.join(dest_folder, file_name)
+        shutil.move(src_path, dest_path)
+        print(f"Moved {file_name} to {dest_folder}")
+
+
+# import os
+# import shutil
+
 # Define the source and destination folders
-source_folder = 'path_to_source_folder'  # Replace with the path to your source folder
-destination_folder = 'path_to_destination_folder'  # Replace with the path to your destination folder
+source_folder = 'images'  # Replace with the path to your source folder
+destination_folder = 'training'  # Replace with the path to your destination folder
 
 # Create the destination folder if it doesn't exist
 os.makedirs(destination_folder, exist_ok=True)
