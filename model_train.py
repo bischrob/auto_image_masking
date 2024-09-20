@@ -105,7 +105,8 @@ def train_model(training_dir, model_path, mask_dir=None, num_epochs=15, log_file
             print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}")
 
             # Save the model with epoch number appended to the filename
-            model_save_path = f"{model_path}_epoch_{epoch+1}.pth"
+            model_path_without_ext, _ = os.path.splitext(model_path)
+            model_save_path = f"{model_path_without_ext}_epoch_{epoch+1}.pth"
             torch.save(model.state_dict(), model_save_path)
             print(f"Model saved: {model_save_path}")
 
