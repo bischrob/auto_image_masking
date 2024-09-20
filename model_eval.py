@@ -76,6 +76,7 @@ def mask_images(img_dir, out_dir='masks', model_path='model.pth', probability=0.
             # Process the output mask
             output = torch.sigmoid(output).squeeze().cpu().numpy()
             output_mask = (output > probability).astype(np.uint8)
+            output_mask = 1 - output_mask
 
             # Resize the mask back to original size using LANCZOS
             mask_original_size = Image.fromarray((output_mask * 255).astype(np.uint8)).resize(
