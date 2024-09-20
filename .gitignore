@@ -169,3 +169,5 @@ sbatch*
 *.jpg
 *.err
 *.out
+tmp.py
+tmp2.py
